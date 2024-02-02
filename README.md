@@ -1,14 +1,10 @@
 # ⛅ LiWeatherApp
 
-LiWeatherApp is a simple weather application that provides real-time weather information for a given location.
-
-![](https://github.com/erenxcolakx/LiWeatherApp/blob/main/public/images/LiWeather%20Wide.gif)
-
-![](https://github.com/erenxcolakx/LiWeatherApp/blob/main/public/images/LiWeather.gif)
+LiWeatherApp is a simple weather application that provides real-time and 14-days weather information by given location.
 
 ## Features
 
-- Retrieve current weather data including temperature, wind speed, humidity, and more.
+- Retrieve current and 14-days weather data including temperature, wind speed, humidity, and more.
 - User-friendly interface with graphical representation of weather conditions.
 - Supports searching for weather information based on city names.
 
