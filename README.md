@@ -2,6 +2,8 @@
 
 LiWeatherApp is a simple weather application that provides real-time and 14-days weather information by given location.
 
+Click to go to website [LiWeatherApp](https://liweather.onrender.com)
+
 ## Features
 
 - Retrieve current and 14-days weather data including temperature, wind speed, humidity, and more.
