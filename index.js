@@ -91,7 +91,6 @@ app.get("/weather", async (req, res) => {
     const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
 
     // Get the current weather data from API response
-    console.log(response.data);
     res.render("weather.ejs", {
       temperature: response.data.current.temperature_2m,
       windSpeed: response.data.current.wind_speed_10m,
