@@ -1,7 +1,7 @@
 import express from "express";
 import axios from "axios";
 const app = express();
-const port = 4000;
+const port =  process.env.PORT || 3000;
 const API_URL = "https://api.open-meteo.com/v1/forecast?";
 
 const current =["temperature_2m","apparent_temperature","rain,snowfall","weather_code","wind_speed_10m","relative_humidity_2m","is_day"];
