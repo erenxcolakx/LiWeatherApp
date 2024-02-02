@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: url('/images/background-night.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+  }
+
+.container {
+    background: none;
+    min-width: 280px;
+  }
+
+.card{
+    opacity: 97%;
+  }
+.horizontal-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.horizontal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background-color: white;
+}
+
+.horizontal-list li {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+.list-card{
+    min-width: 120px;
+    border-radius: 18px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    -ms-border-radius: 18px;
+    -o-border-radius: 18px;
+}
+::-webkit-scrollbar {
+  width: 2px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #939393;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
