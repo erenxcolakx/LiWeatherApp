@@ -6,7 +6,7 @@ const API_URL = "https://api.open-meteo.com/v1/forecast?";
 
 const current =["temperature_2m","apparent_temperature","rain,snowfall","weather_code","wind_speed_10m","relative_humidity_2m","is_day"];
 const daily =["weather_code","temperature_2m_max","temperature_2m_min","wind_speed_10m_max","sunshine_duration","rain_sum",];
-const timezone = "auto";
+const timezone = "Europe%2FMoscow";
 const forecast_days = 14;
 
 
