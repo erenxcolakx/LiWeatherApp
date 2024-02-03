@@ -1,26 +1,4 @@
-// ------------------------- User Time Update -------------------------//
-function updateUserTime() {
-    // Get the user's local time
-    const userLocalTime = new Date();
-
-    // Format the time
-    const hours = userLocalTime.getHours();
-    const minutes = userLocalTime.getMinutes();
-
-    const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
-
-    // Display the time on the page
-    $("#time").text(formattedTime);
-}
-
-// Call the function initially
-updateUserTime();
-
-// Update the user's time every second (1000 milliseconds)
-setInterval(updateUserTime, 5000);
-
 // ------------------------ City Search and Find -------------------------//
-
 async function fetchAndDisplaySuggestions() {
 const inputBox = $("#citySearch");
 const userInput = inputBox.val().trim();

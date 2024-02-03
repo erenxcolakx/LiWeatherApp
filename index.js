@@ -6,7 +6,7 @@ const API_URL = "https://api.open-meteo.com/v1/forecast?";
 
 const current =["temperature_2m","apparent_temperature","rain,snowfall","weather_code","wind_speed_10m","relative_humidity_2m","is_day"];
 const daily =["weather_code","temperature_2m_max","temperature_2m_min","wind_speed_10m_max","sunshine_duration","rain_sum",];
-const timezone = "Europe%2FMoscow";
+const timezone = "auto";
 const forecast_days = 14;
 
 
@@ -84,11 +84,23 @@ app.get("/weather", async (req, res) => {
       + `&forecast_days=${forecast_days}`
     );
 
-    const userLocalTime = new Date();
     // Format the time
-    const hours = userLocalTime.getHours();
-    const minutes = userLocalTime.getMinutes();
-    const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+    const currentDate = new Date();
+    const utcHour = currentDate.getUTCHours();
+    const utcMinute = currentDate.getUTCMinutes();
+    const utcOffsetInHours = response.data.utc_offset_seconds / 3600;
+    // utcOffsetInMinutes değerini hesapla
+    const utcOffsetInMinutes = utcOffsetInHours * 60;
+    // final_hour'u saat ve dakika ofsetleriyle hesapla
+    let final_hour = utcHour + Math.floor(utcOffsetInHours);
+    let final_minute = utcMinute + (utcOffsetInMinutes % 60);
+    if(final_minute >= 60) {
+      final_hour++;
+      final_minute -= 60;
+    }
+    // 24 saatlik döngüyü sağlamak için mod işlemi
+    final_hour = (final_hour + 24) % 24;
+    const formattedTime = `${final_hour}:${final_minute < 10 ? '0' : ''}${final_minute}`;
 
     // Get the current weather data from API response
     res.render("weather.ejs", {
