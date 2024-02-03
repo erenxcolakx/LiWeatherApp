@@ -37,7 +37,7 @@ Install dependencies:
    ```
 Start the application:
    ```bash
-   npm start
+   npx nodemon index.js
    ```
 The application will be accessible at http://localhost:3000.
 
