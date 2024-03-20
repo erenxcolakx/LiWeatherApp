@@ -74,7 +74,7 @@
                         </div>
                       </div>
                       <section id="weekly">
-                        <div class="horizontal-scroll-container">
+                        <div class="horizontal-scroll-container" onwheel="scrollHorizontally(this, event)">
                           <ul class="horizontal-list">
                             <% for (let i = 0; i < weekly_data.time.length; i++) { %>
                               <% var truncatedTime = weekly_data.time[i].slice(5); %>
@@ -124,5 +124,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="timeUpdate.js"></script>
+<script src="scroll.js"></script>
 </body>
 </html>
