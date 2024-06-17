@@ -2,6 +2,7 @@ const API_URL = "https://api.open-meteo.com/v1/forecast?";
 
 const current =["temperature_2m","apparent_temperature","rain,snowfall","weather_code","wind_speed_10m","relative_humidity_2m","is_day"];
 const daily =["weather_code","temperature_2m_max","temperature_2m_min","wind_speed_10m_max","sunshine_duration","rain_sum",];
+const hourly =["wind_speed_10m"]
 const timezone = "auto";
 const forecast_days = 14;
 
@@ -60,6 +61,7 @@ class ApiOperations {
     this.API_URL = API_URL;
     this.current =  current;
     this.daily = daily;
+    this.hourly = hourly;
     this.forecast_days = forecast_days;
     this.timezone = timezone;
   }
@@ -82,4 +84,21 @@ function format_time(utc_offset_seconds) {
       final_hour = (final_hour + 24) % 24;
       return `${final_hour}:${final_minute < 10 ? '0' : ''}${final_minute}`;
 }
-export { WeatherHelper , ApiOperations, format_time }
+// It takes speed values parameter according to day number which is will be shown
+function get_avg_windspeed(windSpeedData,forecast_days){
+  const segmentLength = 24; // In order to get 1 day of wind speed
+  let dividedWindSpeedArray = [];
+  // divide into the number of days and push dividedWindSpeedArray
+  for (let i = 0; i < forecast_days; i++) {
+    let segment = windSpeedData.slice(i * segmentLength, (i + 1) * segmentLength);
+    dividedWindSpeedArray.push(segment);
+  }
+  //Get avg wind speed of each day
+  let averagesArray = dividedWindSpeedArray.map(segment => {
+    let sum = segment.reduce((acc, val) => acc + val, 0);
+    return Math.floor((sum / segment.length)*10) / 10;
+  });
+  return averagesArray
+}
+
+export { WeatherHelper , ApiOperations, format_time, get_avg_windspeed}

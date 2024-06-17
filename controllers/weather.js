@@ -1,5 +1,5 @@
 import axios from "axios";
-import {WeatherHelper, ApiOperations, format_time} from "../model/data.js";
+import {WeatherHelper, ApiOperations, format_time, get_avg_windspeed} from "../model/data.js";
 
 
 const weatherHelper = new WeatherHelper();
@@ -8,6 +8,7 @@ const apiOperations = new ApiOperations();
 const API_URL = apiOperations.API_URL;
 const current = apiOperations.current;
 const daily = apiOperations.daily;
+const hourly = apiOperations.hourly;
 const timezone = apiOperations.timezone;
 const forecast_days = apiOperations.forecast_days;
 const weatherCodes = weatherHelper.weatherCodes;
@@ -34,12 +35,13 @@ const getWeather = async  (req, res) => {
         + `latitude=${latitude}&longitude=${longitude}`
         + `&current=${current}`
         + `&daily=${daily}`
+        + `&hourly=${hourly}`
         + `&timezone=${timezone}`
         + `&forecast_days=${forecast_days}`
       );
 
       const formattedTime = format_time(response.data.utc_offset_seconds);
-
+      const averagesArray = get_avg_windspeed(response.data.hourly.wind_speed_10m,forecast_days);
       // Get the current weather data from API response
       res.render("weather.ejs", {
         temperature: response.data.current.temperature_2m,
@@ -51,6 +53,7 @@ const getWeather = async  (req, res) => {
         time: formattedTime,
         cityName: cityName,
         weekly_data: response.data.daily,
+        averageWeeklyWindSpeed: averagesArray
       });
     }
     catch (error) {
