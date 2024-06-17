@@ -46,7 +46,7 @@
                       <div class="d-flex align-items-center">
                         <div class="flex-grow-1" style="font-size: 1rem;">
                           <div class="d-flex">
-                            <img src="/images/wind.png" class="my-auto" width="24px" height="24px" alt="wind-speed-icon">
+                            <img src="/images/wind.png" class="my-auto" width="24px" height="24px" alt="wind-speed-icon" data-toggle="tooltip" data-placement="top" title="Wind Speed">
                             <% if (locals.windSpeed) { %>
                               <span class="ms-1" id="windSpeed">
                                 <%= windSpeed %> km/h
@@ -54,7 +54,7 @@
                             <% } %>
                           </div>
                           <div class="d-flex">
-                            <img src="/images/humidity.png" class="my-auto" width="20px" height="20px" alt="humidity-icon">
+                            <img src="/images/humidity.png" class="my-auto" width="20px" height="20px" alt="humidity-icon" data-toggle="tooltip" data-placement="top" title="Humidity">
                             <% if (locals.humidity) { %>
                               <span class="ms-2" id="humidity">
                                 <%= humidity %>%
@@ -103,10 +103,10 @@
                                        <% } %>
                                      <% } %>
                                   <!-- Daily max-min temp -->
-                                    <p style="font-size: 14px;" class="mt-2"><%= weekly_data.temperature_2m_max[i] %> / <%= weekly_data.temperature_2m_min[i] %> °C </p>
+                                    <p style="font-size: 14px;" class="mt-2" data-toggle="tooltip" data-placement="top" title="Max/Min Temperature"><%= weekly_data.temperature_2m_max[i] %> / <%= weekly_data.temperature_2m_min[i] %> °C </p>
                                 </div>
                                 <!-- Wind Speed -->
-                                <div>
+                                <div data-toggle="tooltip" data-placement="top" title="Avg. Wind Speed">
                                   <p class="text-center" style="font-size: 12px;">
                                     <img src="/images/wind.png" width="20px" height="20px" alt="wind-speed-icon">
                                     <%= averageWeeklyWindSpeed[i] %> km/h
