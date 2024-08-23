@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+.sp-background {
+  background: url('./images/searchpage-bg.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh; /* Ekranın tamamını kapsar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.sp .pacifico{
+  font-family: 'Pacifico', cursive;
+}
+
+.sp .container {
+  background: none;
+  min-width: fit-content;
+}
+
+.sp ul {
+  list-style-type: circle;
+  padding: 0;
+  margin: 0;
+}
+
+.sp li {
+  padding: 3px;
+}
+
+.sp li:hover {
+  background-color: #f0f0f0;
+}
+
+.custom-link {
+  color: black; /* Metin rengi siyah */
+  text-decoration: none; /* Alt çizgiyi kaldır */
+}
+
+.custom-link:hover {
+  text-decoration: underline; /* Üzerine gelindiğinde alt çizgiyi göster */
+}
+
+#header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.sp .card-weather{
+  border: #ffffff 2px solid;
+  border-radius: 35px;
+  height: 50vh;
+  min-height: 400px;
+  max-width: 60%;
+  min-width: fit-content;
+  color: black;
+  background-color: #ffffff;
+  opacity: 90%;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  -ms-border-radius: 35px;
+  -o-border-radius: 35px;
+}
+
+.sp .top-bar{
+    color: #000000;
+    border-radius: 35px;
+    border-color: #ffffff;
+    border-style: solid;
+    border-width: thin;
+    background-color: #ffffff;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    -ms-border-radius: 35px;
+    -o-border-radius: 35px;
+}
+
+.sp .scrollable-list{
+  max-height: 140px;
+  overflow-y: auto;
+  overflow-x: auto;
+  border-radius: 15px;
+  max-width: 60%;
+  min-width: 350px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+  }
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background: #001b3d;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+@media screen and (min-height:1000px) {
+  .scrollable-list{
+    max-height: 22vh;
+  }
+}
