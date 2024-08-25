@@ -1,16 +1,18 @@
-.wp-background {
+.wp-background-sunset {
   height: 100vh; /* Tüm ekranı kaplasın */
   width: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-.wp-background.sunset {
   background-image: url('./images/background-sunset.jpeg');
 }
 
-.wp-background.night {
+.wp-background-night {
+  height: 100vh; /* Tüm ekranı kaplasın */
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   background-image: url('./images/background-night.jpeg');
 }
 
@@ -71,4 +73,26 @@
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
+}
+.gradient-background {
+  background: linear-gradient(300deg, #010101, #ffffff, #040059);
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
