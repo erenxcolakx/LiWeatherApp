@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import './WeatherPage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import { getWeather } from '../api/weatherApi';
+import axios from 'axios';
 import BackButton from './components/BackButton.js';
 import WeeklyWeatherList from './components/WeeklyWeatherList.js';
 import CurrentWeather from './components/CurrentWeather';
@@ -78,8 +78,14 @@ const useWeatherData = (latitude, longitude) => {
     const fetchWeatherData = async () => {
       if (latitude && longitude) {
         try {
-          const data = await getWeather(latitude, longitude);
-          setWeatherData(data);
+          const data = await axios.get('/api/weather', {
+            params: {
+              latitude,
+              longitude,
+            }
+          });
+          console.log(data.data)
+          setWeatherData(data.data);
         } catch (error) {
           console.error("Error fetching weather data:", error);
         }

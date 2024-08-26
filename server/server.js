@@ -1,13 +1,18 @@
 import express from "express";
 import router from "./routes/weatherRoutes.js";
+import cors from 'cors'
 const app = express();
-const port =  process.env.PORT || 3000;
+const port =  process.env.PORT || 5000;
+const corsOptions = {
+    origin: '*', // Tüm domainlerden gelen isteklere izin verir
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204
+  };
 
-app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.set('view engine', 'ejs');
-
+app.use(cors(corsOptions));
 app.use(router);
 
 app.listen(port, () => {
