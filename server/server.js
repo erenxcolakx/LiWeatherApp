@@ -16,5 +16,5 @@ app.use(cors(corsOptions));
 app.use(router);
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening at ${process.env.BACKEND_URL || `http://localhost:${port}`}`);
 });
