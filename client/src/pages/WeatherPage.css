@@ -1,0 +1,98 @@
+.wp-background-sunset {
+  height: 100vh; /* Tüm ekranı kaplasın */
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('./images/background-sunset.jpeg');
+}
+
+.wp-background-night {
+  height: 100vh; /* Tüm ekranı kaplasın */
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('./images/background-night.jpeg');
+}
+
+.wp .container {
+    background: none;
+    min-width: 280px;
+  }
+
+.wp .card{
+    opacity: 97%;
+  }
+.wp .horizontal-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.wp .horizontal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background-color: white;
+}
+
+.wp .horizontal-list li {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+.wp .list-card{
+    min-width: 120px;
+    border-radius: 18px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    -ms-border-radius: 18px;
+    -o-border-radius: 18px;
+}
+.wp .navigatesp{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+::-webkit-scrollbar {
+  width: 2px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #939393;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+.gradient-background {
+  background: linear-gradient(300deg, #ffffff, #ffffff, #ffffff);
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
