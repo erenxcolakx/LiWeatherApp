@@ -3,73 +3,12 @@ import { useLocation } from 'react-router-dom';
 import './WeatherPage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import axios from 'axios';
+import getWeatherData from '../services/weatherApi.js';
 import BackButton from './components/BackButton.js';
 import WeeklyWeatherList from './components/WeeklyWeatherList.js';
 import CurrentWeather from './components/CurrentWeather';
-
-// weatherDescriptions ve weatherIcons burada kalacak...
-const weatherDescriptions = {
-  0: "Clear sky",
-  1: "Mainly clear",
-  2: "Partly cloudy",
-  3: "Overcast",
-  45: "Fog and depositing rime fog",
-  48: "Fog and depositing rime fog",
-  51: "Drizzle: Light intensity",
-  53: "Drizzle: Moderate intensity",
-  55: "Drizzle: Dense intensity",
-  56: "Freezing Drizzle: Light intensity",
-  57: "Freezing Drizzle: Dense intensity",
-  61: "Rain: Slight intensity",
-  63: "Rain: Moderate intensity",
-  65: "Rain: Heavy intensity",
-  66: "Freezing Rain: Light intensity",
-  67: "Freezing Rain: Heavy intensity",
-  71: "Snow fall: Slight intensity",
-  73: "Snow fall: Moderate intensity",
-  75: "Snow fall: Heavy intensity",
-  77: "Snow grains",
-  80: "Rain showers: Slight intensity",
-  81: "Rain showers: Moderate intensity",
-  82: "Rain showers: Violent intensity",
-  85: "Snow showers: Slight intensity",
-  86: "Snow showers: Heavy intensity",
-  95: "Thunderstorm: Slight or moderate",
-  96: "Thunderstorm with slight hail",
-  99: "Thunderstorm with heavy hail",
-};
-
-const weatherIcons = {
-  0: "sunny.png",
-  1: "sunny.png",
-  2: "partly-cloudy.gif",
-  3: "overcast.png",
-  45: "foggy.png",
-  48: "foggy.png",
-  51: "drizzle.png",
-  53: "drizzle.png",
-  55: "drizzle.png",
-  56: "drizzle.png",
-  57: "drizzle.png",
-  61: "rainy.png",
-  63: "rainy.png",
-  65: "rainy.png",
-  66: "rainy.png",
-  67: "rainy.png",
-  71: "snowfall.png",
-  73: "snowfall.png",
-  75: "snowfall.png",
-  77: "snow.png",
-  80: "rainy.png",
-  81: "rainy.png",
-  82: "rainy.png",
-  85: "snowfall.png",
-  86: "snowfall.png",
-  95: "thunderstorm.gif",
-  96: "thunderstorm.gif",
-  99: "thunderstorm.gif",
-};
+import Loading from './components/Loading.js';
+import { WEATHER_DESCRIPTIONS, WEATHER_ICONS } from '../constants/weatherConstants.js';
 
 const useWeatherData = (latitude, longitude) => {
   const [weatherData, setWeatherData] = useState(null);
@@ -78,14 +17,9 @@ const useWeatherData = (latitude, longitude) => {
     const fetchWeatherData = async () => {
       if (latitude && longitude) {
         try {
-          const data = await axios.get('/api/weather', {
-            params: {
-              latitude,
-              longitude,
-            }
-          });
-          console.log(data.data)
-          setWeatherData(data.data);
+          const data = await getWeatherData(latitude, longitude);
+          console.log(data)
+          setWeatherData(data);
         } catch (error) {
           console.error("Error fetching weather data:", error);
         }
@@ -108,11 +42,8 @@ const useLocalTime = (initialTime) => {
       currentDate.setHours(hours, minutes, 0, 0);
 
       const updateLocalTime = () => {
-        const hours = currentDate.getHours().toString().padStart(2, '0');
-        const minutes = currentDate.getMinutes().toString().padStart(2, '0');
-        setTime(`${hours}:${minutes}`);
+        setTime(currentDate.toTimeString().slice(0, 5));
       };
-
       updateLocalTime();
 
       const interval = setInterval(() => {
@@ -138,19 +69,17 @@ const WeatherPage = () => {
   const time = useLocalTime(weatherData?.time);
 
   const weatherValues = useMemo(() => ({
-    descriptions: weatherDescriptions,
-    icons: weatherIcons
+    descriptions: WEATHER_DESCRIPTIONS,
+    icons: WEATHER_ICONS
   }), []);
 
   const scrollHorizontally = useCallback((event) => {
-    event.preventDefault();
     const container = event.currentTarget;
-    const delta = Math.max(-1, Math.min(1, event.deltaY));
-    container.scrollLeft += delta * 50;
+    container.scrollLeft += Math.sign(event.deltaY) * 50;
   }, []);
 
   if (!weatherData) {
-    return <div className="wp gradient-background">Loading weather data...</div>;
+    return <div className="wp gradient-background d-flex justify-content-center align-content-center"><Loading/></div>;
   }
 
   return (
