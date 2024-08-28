@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const WeeklyWeatherCard = ({ time, weatherCode, maxTemp, minTemp, avgWindSpeed, weatherValues }) => {
-  console.log('WeeklyWeatherCard rendered with:', time, weatherCode, maxTemp, minTemp, avgWindSpeed);
 
   const dateObject = new Date(time);
   const dayName = dateObject.toLocaleDateString('en-US', { weekday: 'long' });

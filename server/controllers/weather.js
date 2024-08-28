@@ -14,7 +14,6 @@ const forecast_days = apiOperations.forecast_days;
 const getWeather = async (req, res) => {
   try {
       const { latitude, longitude } = req.query;
-      console.log(latitude, longitude);
       const response = await axios.get(API_URL
           + `latitude=${latitude}&longitude=${longitude}`
           + `&current=${current}`
@@ -26,7 +25,6 @@ const getWeather = async (req, res) => {
 
       const formattedTime = format_time(response.data.utc_offset_seconds);
       const averagesArray = get_avg_windspeed(response.data.hourly.wind_speed_10m, forecast_days);
-      console.log("currentData part:", response.data.current)
       res.json({
           temperature: response.data.current.temperature_2m,
           windSpeed: response.data.current.wind_speed_10m,

@@ -18,7 +18,6 @@ const useWeatherData = (latitude, longitude) => {
       if (latitude && longitude) {
         try {
           const data = await getWeatherData(latitude, longitude);
-          console.log(data)
           setWeatherData(data);
         } catch (error) {
           console.error("Error fetching weather data:", error);

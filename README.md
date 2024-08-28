@@ -2,7 +2,9 @@
 
 LiWeatherApp is a simple weather application that provides real-time and 14-days weather information by given location.
 
-Click to go to website [LiWeatherApp](https://liweather.onrender.com)
+Click to go to website [LiWeatherApp](https://liweather.vercel.app)
+
+![1724835599101](image/README/1724835599101.png)
 
 ## Features
 
@@ -16,32 +18,64 @@ Click to go to website [LiWeatherApp](https://liweather.onrender.com)
 - Express.js
 - Axios
 - HTML, CSS, Bootstrap, JavaScript
-- EJS (Embedded JavaScript) for templating
+- React.js
 - Open-Meteo API
+- Docker
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js installed on your machine
+- Docker (optional)
 
 ### Installation
+
 Clone the repository:
-   ```bash
+
+```bash
    git clone https://github.com/erenxcolakx/LiWeatherApp.git
-   ```
+```
+
 Install dependencies:
-   ```bash
-   cd LiWeatherApp
-   npm install
-   ```
+
+```bash
+  cd server
+  npm install
+  cd client
+  npm install
+```
+
 Start the application:
-   ```bash
-   npx nodemon index.js
-   ```
+
+```bash
+cd server
+npx nodemon server.js
+```
+
+```bash
+cd client 
+npm run build
+npm start
+```
+
+### Docker
+
+Build and run the Docker containers for both the frontend and backend.
+
+```bash
+docker-compose up --build
+```
+
+
+
+---
+
+
+
 The application will be accessible at http://localhost:3000.
 
-Usage 
+Usage
 Open your web browser and navigate to http://localhost:3000.
 Enter the city name in the search bar and click the city you want.
 View the real-time weather information for the specified location.
