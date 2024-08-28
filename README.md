@@ -4,7 +4,7 @@ LiWeatherApp is a simple weather application that provides real-time and 14-days
 
 Click to go to website [LiWeatherApp](https://liweather.vercel.app)
 
-![1724835599101](image/README/1724835599101.png)
+![Liweather](client/public/images/LiWeather.gif)
 
 ## Features
 
@@ -67,11 +67,7 @@ Build and run the Docker containers for both the frontend and backend.
 docker-compose up --build
 ```
 
-
-
 ---
-
-
 
 The application will be accessible at http://localhost:3000.
 
